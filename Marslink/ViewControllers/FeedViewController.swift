@@ -46,7 +46,7 @@ class FeedViewController: UIViewController,IGListAdapterDataSource,IGListAdapter
   }
   
   func listAdapter(_ listAdapter: IGListAdapter, sectionControllerFor object: Any) -> IGListSectionController {
-    return IGListSectionController()
+    return JounerlSectionController()
   }
   
   func emptyView(for listAdapter: IGListAdapter) -> UIView? {

@@ -24,7 +24,13 @@ class JounerlSectionController: IGListSectionController,IGListSectionType {
   }
   
   func sizeForItem(at index: Int) -> CGSize {
-    return .zero
+    guard let context = collectionContext, let entry = entry else { return .zero }
+    let width = context.containerSize.width
+    if index == 0 {
+      return CGSize(width: width, height: 30)
+    } else {
+      return JournalEntryCell.cellSize(width: width, text: entry.text)
+    }
   }
   
   func cellForItem(at index: Int) -> UICollectionViewCell {

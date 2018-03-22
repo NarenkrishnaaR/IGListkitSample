@@ -13,12 +13,12 @@ class FeedViewController: UIViewController,IGListAdapterDataSource,IGListAdapter
   
   let loader = JournalEntryLoader()
   let collectionView: IGListCollectionView = {
+    let pathfinder = Pathfinder()
     
     let view = IGListCollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
     view.backgroundColor = UIColor.black
     return view
   }()
-  
   lazy var igAdapterList : IGListAdapter = {
     return IGListAdapter(updater: IGListAdapterUpdater(), viewController: self, workingRangeSize: 0)
   }()
@@ -29,6 +29,7 @@ class FeedViewController: UIViewController,IGListAdapterDataSource,IGListAdapter
     view.addSubview(collectionView)
     igAdapterList.collectionView = collectionView
     igAdapterList.delegate = self
+    igAdapterList.dataSource = self
   }
   
   override func viewDidLayoutSubviews() {
